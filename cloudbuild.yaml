@@ -1,0 +1,4 @@
+steps:
+  - name: gcr.io/mathminute-org/firebase
+    args: ['deploy', '--project=mathminute-org', '--only=hosting']
+timeout: "1600s"

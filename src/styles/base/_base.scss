@@ -1,0 +1,16 @@
+html {
+
+}
+
+body {
+  background-color: white;
+  font-family: sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
