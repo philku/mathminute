@@ -1,15 +1,27 @@
 
 import React from "react";
+import SubmitForm from "./SubmitForm";
 
 class MainApplet extends React.Component{
     state = {
+        previous: {
+            top: 0,
+            bottom: 0,
+            operation: 0,
+            solution: 0
+        },
         current: {
             top: 0,
             bottom: 0,
             operation: 0,
             solution: 0
         },
-        error: undefined
+        next: {
+            top: 0,
+            bottom: 0,
+            operation: 0,
+            solution: 0
+        }
     };
     operations = {
         name: ['add','subtract','multiply'],
@@ -32,9 +44,11 @@ class MainApplet extends React.Component{
             }
         };
 
-        this.setState(() => (
+        this.setState((prevState) => (
             {
-                current: {
+                previous: prevState.current,
+                current: prevState.next,
+                next: {
                     top: top,
                     bottom: bottom,
                     operation: operation,
@@ -44,47 +58,43 @@ class MainApplet extends React.Component{
         ));
     };
 
-    onAnswerSubmit = (e) => {
-        e.preventDefault();
-
-        const answer = parseInt(e.target.elements.answer.value);
-
-        let error = undefined;
-        if (isNaN(answer)) {
-            error = 'Please enter a number.';
-        }
-        if (this.state.current.solution !== parseInt(e.target.elements.answer.value)) {
-            error = parseInt(e.target.elements.answer.value).toString() + ' is incorrect.';
-        }
-
-        this.setState(()=>({ error }));
-
-        e.target.elements.answer.value = '';
-        if (!error) {
-            // Correct
+    onAnswerSubmit = (correct) => {
+        if (correct) {
             this.nextQuestion();
         }
     };
 
     componentDidMount = () => {
-
+        this.nextQuestion();
     };
 
     render = () => (
         <div>
-            <div>
-                {this.state.current.top}
-                {this.operations.representation[this.state.current.operation]}
-                {this.state.current.bottom}
+            <div className="settings">
+
             </div>
-            <div>
-                {this.state.error}
+            <div className="questions">
+                <div className="question question-inactive question-previous">
+                    {this.state.previous.top}
+                    {this.operations.representation[this.state.previous.operation]}
+                    {this.state.previous.bottom}
+                </div>
+                <div className="question question-active">
+                    {this.state.current.top}
+                    {this.operations.representation[this.state.current.operation]}
+                    {this.state.current.bottom}
+                </div>
+                <div className="question question-inactive question-next">
+                    {this.state.next.top}
+                    {this.operations.representation[this.state.next.operation]}
+                    {this.state.next.bottom}
+                </div>
             </div>
-            <form onSubmit={this.onAnswerSubmit}>
-                <input name="answer" autoFocus={true}/>
-                <button>Submit</button>
-                <p>Hit enter or click submit to answer.</p>
-            </form>
+            <SubmitForm
+                onAnswerSubmit = {this.onAnswerSubmit}
+                correctAnswer = {this.state.current.solution}
+                error = {this.state.error}
+            />
         </div>
     );
 }

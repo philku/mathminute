@@ -1,0 +1,23 @@
+.questions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.question {
+
+}
+
+.question-active {
+  width: 33%;
+  min-width: 200px;
+  background-color: antiquewhite;
+  text-align: center;
+  font-size: $l-size;
+  border-radius: 8px;
+}
+
+.question-inactive {
+  font-size: $s-size;
+}
+

@@ -1,0 +1,26 @@
+.submit-section {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.submit-error {
+  width: 200px;
+  margin: auto;
+  color: darkred;
+}
+
+.submit-form {
+  width: 200px;
+  margin: auto;
+
+  input {
+    font-size: 6rem;
+    width: 192px;
+    text-align: center;
+  }
+
+  button {
+    width: 100%;
+  }
+
+}
