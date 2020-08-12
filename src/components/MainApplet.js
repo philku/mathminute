@@ -1,6 +1,8 @@
 
 import React from "react";
 import SubmitForm from "./SubmitForm";
+import Questions from "./Questions";
+import Settings from "./Settings";
 
 class MainApplet extends React.Component{
     state = {
@@ -66,30 +68,19 @@ class MainApplet extends React.Component{
 
     componentDidMount = () => {
         this.nextQuestion();
+        this.nextQuestion();
     };
 
     render = () => (
         <div>
-            <div className="settings">
-
-            </div>
-            <div className="questions">
-                <div className="question question-inactive question-previous">
-                    {this.state.previous.top}
-                    {this.operations.representation[this.state.previous.operation]}
-                    {this.state.previous.bottom}
-                </div>
-                <div className="question question-active">
-                    {this.state.current.top}
-                    {this.operations.representation[this.state.current.operation]}
-                    {this.state.current.bottom}
-                </div>
-                <div className="question question-inactive question-next">
-                    {this.state.next.top}
-                    {this.operations.representation[this.state.next.operation]}
-                    {this.state.next.bottom}
-                </div>
-            </div>
+            <Settings />
+            <Questions
+                className="questions"
+                previous={this.state.previous}
+                current={this.state.current}
+                next={this.state.next}
+                representations={this.operations.representation}
+            />
             <SubmitForm
                 onAnswerSubmit = {this.onAnswerSubmit}
                 correctAnswer = {this.state.current.solution}

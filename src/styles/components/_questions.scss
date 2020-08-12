@@ -5,19 +5,40 @@
 }
 
 .question {
+  border: 1px solid black;
+  border-radius: 8px;
+
+  .question-top {
+    text-align: right;
+  }
+
+  .question-bottom {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid black;
+
+    .question-bottom_operation {
+      margin-right: .2rem;
+    }
+
+    .question-bottom_digit {
+
+    }
+
+  }
 
 }
 
 .question-active {
-  width: 33%;
-  min-width: 200px;
   background-color: antiquewhite;
   text-align: center;
   font-size: $l-size;
-  border-radius: 8px;
+  padding: 1rem;
 }
 
 .question-inactive {
   font-size: $s-size;
+  opacity: .8;
+  padding: .5rem;
 }
 

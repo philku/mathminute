@@ -17,10 +17,21 @@
     font-size: 6rem;
     width: 192px;
     text-align: center;
+    border-radius: 8px 8px 0 0;
   }
 
   button {
     width: 100%;
+    background-color: #3e008b;
+    color: white;
+    border: none;
+    border-radius: 0 0 8px 8px;
+    padding: .5rem;
+    font-size: 1rem;
+  }
+
+  button:hover {
+    background-color: lighten(#3e008b, 10%);
   }
 
 }

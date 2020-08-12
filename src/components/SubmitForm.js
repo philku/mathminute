@@ -13,8 +13,7 @@ class SubmitForm extends React.Component{
         let error = undefined;
         if (isNaN(answer)) {
             error = 'Please enter a number.';
-        }
-        if (this.props.correctAnswer !== parseInt(e.target.elements.answer.value)) {
+        } else if (this.props.correctAnswer !== parseInt(e.target.elements.answer.value)) {
             error = parseInt(e.target.elements.answer.value).toString() + ' is incorrect.';
         }
 
@@ -36,7 +35,11 @@ class SubmitForm extends React.Component{
                 onSubmit={this.onAnswerSubmit}
                 className="submit-form"
             >
-                <input name="answer" autoFocus={true}/>
+                <input
+                    name="answer"
+                    autoFocus={true}
+                    placeholder="?"
+                />
                 <button>Submit</button>
                 <p>Hit enter or click submit to answer.</p>
             </form>
