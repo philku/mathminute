@@ -63,6 +63,7 @@ class MainApplet extends React.Component{
     onAnswerSubmit = (correct) => {
         if (correct) {
             this.nextQuestion();
+            this.props.incrementScore();
         }
     };
 

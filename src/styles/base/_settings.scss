@@ -1,6 +1,15 @@
 // Colors
 
 
+// Clearfix
+@mixin clearfix() {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
 // Spacing
 $s-size: 1.2rem;
 $m-size: 1.6rem;

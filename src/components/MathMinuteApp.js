@@ -5,18 +5,27 @@ import About from "./About";
 
 class MathMinuteApp extends React.Component {
     state = {
-        options: [],
-        selectedOption: undefined
+        score: 0
+    };
+
+    incrementScore = () => {
+        this.setState((prevState)=>(
+            {
+                score: prevState.score + 1
+            }
+        ));
     };
 
     render() {
         return (
             <div>
-                <Header />
+                <Header score={this.state.score}/>
                 <div className="container">
-                    <MainApplet />
-                    <About />
+                    <MainApplet
+                        incrementScore = {this.incrementScore}
+                    />
                 </div>
+                <About />
             </div>
         );
     }

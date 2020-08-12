@@ -5,4 +5,32 @@
 
 header {
   margin-bottom: 3rem;
+  min-height: 7rem;
+  background-color: #3e008b;
+  color: white;
+  @include clearfix;
+}
+
+.header-left {
+  width: 50%;
+  float: left;
+  p {
+    display: none;
+  }
+}
+
+.header-right {
+  width: 50%;
+  float: right;
+}
+
+.score {
+  text-align: right;
+  padding: 2rem 0 1rem 0;
+}
+
+@media (min-width: 450px) {
+  .header-left p {
+    display: block;
+  }
 }
